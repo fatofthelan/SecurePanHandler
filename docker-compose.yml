@@ -1,0 +1,39 @@
+# This docker-compose.yml file will bring up panhandler on an unreachable backend network, as well 
+# as a NGINX proxy server that will allow access to panhandler via TLS
+
+version: '3.4'
+
+services:
+  panhandler:
+    image: paloaltonetworks/panhandler
+    container_name: panhandler
+    environment:
+      - CNC_USERNAME=tobias
+      - CNC_PASSWORD=panme
+    volumes:
+      - "app-dir:/app"
+      - "user-dir:/home/cnc_user"
+    networks:
+      - ph-backend
+
+  nginx:
+   image: nginx
+   container_name: nginx
+   ports:
+    - "4433:443"
+    - "8888:80"
+   volumes:
+     - "./conf.d:/etc/nginx/conf.d"
+   networks:
+    - ph-frontend
+    - ph-backend   
+
+
+volumes:
+  app-dir:
+  user-dir:
+  nginx:
+
+networks:
+  ph-backend:
+  ph-frontend:
