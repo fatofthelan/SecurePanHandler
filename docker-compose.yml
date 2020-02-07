@@ -21,7 +21,6 @@ services:
    container_name: nginx
    ports:
     - "4433:443"
-    - "8888:80"
    volumes:
      - "./conf.d:/etc/nginx/conf.d"
    networks:
