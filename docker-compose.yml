@@ -11,7 +11,6 @@ services:
       - CNC_USERNAME=tobias
       - CNC_PASSWORD=panme
     volumes:
-      - "app-dir:/app"
       - "user-dir:/home/cnc_user"
     networks:
       - ph-backend
@@ -29,7 +28,6 @@ services:
 
 
 volumes:
-  app-dir:
   user-dir:
   nginx:
 
