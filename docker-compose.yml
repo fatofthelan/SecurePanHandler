@@ -12,6 +12,7 @@ services:
       - CNC_PASSWORD=panme
     volumes:
       - "user-dir:/home/cnc_user"
+      - "/var/run/docker.sock:/var/run/docker.sock"
     networks:
       - ph-backend
 
