@@ -5,7 +5,10 @@ version: '3.4'
 
 services:
   panhandler:
-    image: paloaltonetworks/panhandler
+    image: paloaltonetworks/panhandler:latest
+    # Change image tag from "latest" to "dev" to switch branches.
+    # When switching between dev and latest clear the cache with:
+    # https://panhandler:4433/clear_cache
     container_name: panhandler
     environment:
       - CNC_USERNAME=tobias
