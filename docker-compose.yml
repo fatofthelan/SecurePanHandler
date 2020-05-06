@@ -10,6 +10,7 @@ services:
     # When switching between dev and latest clear the cache with:
     # https://panhandler:4433/clear_cache
     container_name: panhandler
+    restart: on-failure
     environment:
       - CNC_USERNAME=tobias
       - CNC_PASSWORD=panme
@@ -22,6 +23,7 @@ services:
   nginx:
    image: nginx
    container_name: nginx
+   restart: on-failure
    ports:
     - "4433:443"
    volumes:
